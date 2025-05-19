@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIGNAL Solutions Informatiques</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <h1 class="logo">SIGNAL</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#atouts">Nos atouts</a></li>
+                    <li><a href="#temoignages">Témoignages</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="container">
+            <h2>Bienvenue chez SIGNAL Solutions Informatiques</h2>
+            <p>Des services informatiques sur mesure pour entreprises et particuliers.</p>
+        </div>
+    </section>
+
+    <section id="apropos" class="apropos">
+        <div class="container">
+            <h2>À propos de nous</h2>
+            <p>
+                SIGNAL Solutions Informatiques est spécialisé dans la fourniture de services IT
+                modernes et fiables. Notre équipe d’experts accompagne votre transformation digitale
+                avec des solutions adaptées et innovantes.
+            </p>
+            <p>
+                Nous mettons l’accent sur la qualité, la sécurité et la satisfaction client pour
+                garantir des résultats durables.
+            </p>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Nos Services</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <h3>Développement Web & Mobile</h3>
+                    <p>Création de sites internet, applications mobiles et solutions web sur mesure.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Assistance & Support</h3>
+                    <p>Support technique, maintenance et dépannage informatique rapide et efficace.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Cybersécurité</h3>
+                    <p>Audit, surveillance et protection de vos systèmes contre les menaces digitales.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Cloud & Hébergement</h3>
+                    <p>Solutions cloud sécurisées et hébergement professionnel pour vos données et applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="atouts" class="atouts">
+        <div class="container">
+            <h2>Nos atouts</h2>
+            <ul class="atouts-list">
+                <li>Expertise confirmée en technologies modernes</li>
+                <li>Solutions personnalisées adaptées à vos besoins</li>
+                <li>Disponibilité et réactivité pour un support optimal</li>
+                <li>Respect des normes de sécurité les plus strictes</li>
+                <li>Prix compétitifs et engagement qualité</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="temoignages" class="temoignages">
+        <div class="container">
+            <h2>Témoignages clients</h2>
+            <div class="temoignage-item">
+                <p>"Grâce à SIGNAL, notre site web a été refait à temps et au-delà de nos attentes."</p>
+                <h4>- Jean P.</h4>
+            </div>
+            <div class="temoignage-item">
+                <p>"Le support technique est très réactif et professionnel. Je recommande vivement."</p>
+                <h4>- Claire M.</h4>
+            </div>
+            <div class="temoignage-item">
+                <p>"Une équipe compétente qui nous a aidés à sécuriser nos données contre les attaques."</p>
+                <h4>- Alexandre R.</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Foire aux questions (FAQ)</h2>
+            <div class="faq-item">
+                <h3>Quels types de projets pouvez-vous réaliser ?</h3>
+                <p>Nous réalisons des sites web, applications mobiles, solutions cloud, et fournissons support IT.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Comment obtenir un devis personnalisé ?</h3>
+                <p>Contactez-nous via notre formulaire ou par téléphone, nous étudierons votre demande rapidement.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Quels sont vos horaires d’assistance ?</h3>
+                <p>Notre support est disponible du lundi au vendredi, de 9h à 18h.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <form id="contact-form">
+                <label for="name">Nom</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+            <div id="form-message" class="form-message"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2024 SIGNAL Solutions Informatiques. Tous droits réservés.</p>
+            <div class="socials">
+                <a href="#" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a> |
+                <a href="#" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a> |
+                <a href="#" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

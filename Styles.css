@@ -1,0 +1,377 @@
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #1a2a42;
+    color: #ecf0f1;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.logo {
+    font-size: 2.4rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: #3498db;
+    outline: none;
+}
+
+/* Hamburger menu */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0.25rem;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    width: 28px;
+    height: 3px;
+    background-color: #ecf0f1;
+    display: block;
+    border-radius: 2px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+}
+
+.hamburger::before {
+    top: -9px;
+}
+
+.hamburger::after {
+    top: 9px;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(135deg, #2980b9, #3498db);
+    color: #ecf0f1;
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Sections common */
+section {
+    padding: 4rem 0;
+}
+
+h2 {
+    font-size: 2.2rem;
+    color: #1a2a42;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* About */
+.apropos p {
+    max-width: 720px;
+    margin: 0 auto 1rem auto;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #34495e;
+    line-height: 1.7;
+}
+
+/* Services */
+.services .service-list {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+}
+
+.service-item {
+    background-color: #eaf3fb;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(41,128,185,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.service-item:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(41,128,185,0.3);
+}
+
+.service-item h3 {
+    color: #2980b9;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+/* Nos atouts */
+.atouts-list {
+    max-width: 700px;
+    margin: 0 auto;
+    list-style: disc inside;
+    font-size: 1.1rem;
+    color: #34495e;
+}
+
+.atouts-list li {
+    margin-bottom: 1rem;
+}
+
+/* Témoignages */
+.temoignages .temoignage-item {
+    max-width: 700px;
+    margin: 1rem auto;
+    padding: 1.5rem 2rem;
+    border-left: 5px solid #2980b9;
+    background: #eaf3fb;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(41,128,185,0.1);
+}
+
+.temoignages .temoignage-item p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.temoignages .temoignage-item h4 {
+    margin-top: 1rem;
+    font-weight: 700;
+    color: #2980b9;
+    text-align: right;
+    font-size: 1rem;
+}
+
+/* FAQ */
+.faq .faq-item {
+    max-width: 700px;
+    margin: 1rem auto 2rem auto;
+}
+
+.faq .faq-item h3 {
+    font-size: 1.2rem;
+    color: #2980b9;
+    margin-bottom: 0.3rem;
+}
+
+.faq .faq-item p {
+    font-size: 1rem;
+    color: #34495e;
+    line-height: 1.5;
+}
+
+/* Contact */
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2.5rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(41,128,185,0.15);
+}
+
+.contact form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #34495e;
+    user-select: none;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid #d9e6f9;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.contact form input:focus,
+.contact form textarea:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+.contact form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact form button {
+    width: 100%;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.contact form button:hover,
+.contact form button:focus {
+    background-color: #1a5985;
+    outline: none;
+}
+
+.form-message {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #2980b9;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: #1a2a42;
+    color: #ecf0f1;
+    padding: 1.8rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+footer .socials {
+    margin-top: 0.6rem;
+}
+
+footer .socials a {
+    color: #ecf0f1;
+    text-decoration: none;
+    margin: 0 0.6rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+footer .socials a:hover,
+footer .socials a:focus {
+    color: #3498db;
+    outline: none;
+}
+
+/* Responsive navigation */
+
+@media (max-width: 768px) {
+    nav ul {
+        position: fixed;
+        top: 64px;
+        right: 0;
+        height: calc(100% - 64px);
+        width: 220px;
+        background-color: #1a2a42;
+        flex-direction: column;
+        padding-top: 2rem;
+        gap: 1.5rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    nav ul.show {
+        transform: translateX(0);
+    }
+
+    nav ul li {
+        margin: 0;
+        text-align: center;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+}
+
+/* Responsive typography and spacing */
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .services .service-list {
+        grid-template-columns: 1fr;
+    }
+
+    .contact form {
+        padding: 2rem;
+    }
+}

@@ -1,58 +1,34 @@
-// Gestion du menu hamburger
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('nav ul');
+// script.js
 
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
-});
-
-// Fermeture du menu quand on clique sur un lien (mobile)
-document.querySelectorAll('nav ul li a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (navLinks.classList.contains('show')) {
-      navLinks.classList.remove('show');
-    }
-  });
-});
-
-// Gestion du formulaire de contact
-const form = document.getElementById('contact-form');
-const formMessage = document.getElementById('form-message');
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  // Récupérer les valeurs
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const message = form.message.value.trim();
-
-  // Validation simple
-  if (!name || !email || !message) {
-    formMessage.style.color = 'red';
-    formMessage.textContent = 'Veuillez remplir tous les champs.';
-    return;
-  }
-
-  // Simuler envoi
-  formMessage.style.color = '#00509e';
-  formMessage.textContent = 'Envoi en cours...';
-
-  // Simuler délai d'envoi
-  setTimeout(() => {
-    formMessage.textContent = `Merci, ${name}, votre message a bien été envoyé. Nous vous répondrons bientôt.`;
-    form.reset();
-  }, 1500);
-});
-
-// Navigation toggle script
+// Wait until the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+  // Select the nav toggle button and the nav links container
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
 
+  // Add click event listener to toggle navigation menu for mobile
   navToggle.addEventListener('click', () => {
+    // Toggle 'active' class on the button to animate hamburger icon
     navToggle.classList.toggle('active');
+
+    // Toggle 'active' class on nav links to show/hide the menu
     navLinks.classList.toggle('active');
+  });
+
+  // Optional: close the menu when clicking outside or on a nav link (enhancement)
+  document.addEventListener('click', (event) => {
+    if (!navToggle.contains(event.target) && !navLinks.contains(event.target)) {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    }
+  });
+
+  // Optional: close menu when a nav link is clicked (mobile UX)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
   });
 });
 

@@ -7,6 +7,15 @@
     box-sizing: border-box;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: inherit; /* Inherit border-radius from parent if any */
+  object-fit: cover; /* Keep aspect ratio and cover container */
+}
+
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;

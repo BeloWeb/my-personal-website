@@ -44,3 +44,15 @@ form.addEventListener('submit', (e) => {
     form.reset();
   }, 1500);
 });
+
+// Navigation toggle script
+document.addEventListener('DOMContentLoaded', () => {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+});
+

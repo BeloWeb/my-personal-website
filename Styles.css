@@ -154,7 +154,7 @@ nav {
     text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
-/* Responsive hero image for full responsiveness */
+/* Responsive hero image for full responsiveness with surbrillance (highlight) */
 .hero-image {
     max-width: 100%;
     height: auto;
@@ -162,6 +162,17 @@ nav {
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     margin-top: 40px;
     display: block;
+    position: relative;
+    /* Highlight effect: subtle glow */
+    transition: box-shadow 0.3s ease;
+}
+
+.hero-image:hover,
+.hero-image:focus {
+    box-shadow:
+      0 0 15px 5px rgba(255, 221, 87, 0.8),
+      0 0 30px 10px rgba(255, 221, 87, 0.6);
+    outline: none;
 }
 
 /* Section common styles */
@@ -535,14 +546,15 @@ img {
     }
 }
 
-/* Additional enhancements for hero-image smaller screen */
+/* Additional enhancements for hero-image on mobile */
 @media (max-width: 600px) {
     .hero-image {
         margin-top: 30px;
-        max-width: 90%;
+        max-width: 90vw;
         border-radius: 10px;
         box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+        height: auto;
+        object-fit: contain;
     }
 }
-
 

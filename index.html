@@ -1,169 +1,467 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SIGNAL Solutions Informatiques</title>
-    <link rel="stylesheet" href="Styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIGNAL - Solutions Informatiques</title>
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    a {
+      color: #0078d7;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover, a:focus {
+      color: #005a9e;
+    }
+
+    /* Header */
+    header {
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+    header .overlay-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+    header .btn-primary {
+      background-color: #0078d7;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 6px 15px rgba(0,120,215,0.5);
+      transition: background-color 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+    header .btn-primary:hover, header .btn-primary:focus {
+      background-color: #005a9e;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 100;
+      font-weight: 600;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      color: #0078d7;
+      letter-spacing: 2px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      display: inline;
+    }
+    .nav-links a {
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      display: block;
+    }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 28px;
+      height: 24px;
+      justify-content: space-between;
+    }
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #0078d7;
+      border-radius: 2px;
+    }
+
+    /* Sections */
+    section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #0078d7;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+    section p.lead {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem auto;
+      font-size: 1.2rem;
+      color: #555;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* About */
+    #about {
+      background-color: #eaf1fc;
+      padding: 4rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,120,215,0.15);
+    }
+    #about .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2.5rem;
+      justify-content: center;
+    }
+    #about img {
+      flex: 1 1 300px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    #about .text {
+      flex: 1 1 400px;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    /* Services */
+    #services .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .service-card:hover {
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      transform: translateY(-8px);
+    }
+    .service-card img {
+      height: 80px;
+      margin-bottom: 1.2rem;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+    }
+    .service-card h3 {
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+      color: #0078d7;
+      letter-spacing: 1.1px;
+    }
+    .service-card p {
+      color: #666;
+      font-weight: 400;
+    }
+
+    /* Contact */
+    #contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    #contact label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.3rem;
+    }
+    #contact input, #contact textarea {
+      padding: 0.8rem 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    #contact input:focus, #contact textarea:focus {
+      border-color: #0078d7;
+      outline: none;
+    }
+    #contact button {
+      background-color: #0078d7;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.9rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+    #contact button:hover, #contact button:focus {
+      background-color: #005a9e;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3rem;
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* Responsive nav */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 56px;
+        right: 0;
+        background: white;
+        width: 220px;
+        height: calc(100% - 56px);
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding-top: 2rem;
+        box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+        border-radius: 0 0 0 10px;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+      }
+      .nav-links li {
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container header-container">
-            <h1 class="logo">SIGNAL</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#apropos">À propos</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#atouts">Nos atouts</a></li>
-                    <li><a href="#temoignages">Témoignages</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span class="hamburger"></span>
-                </button>
-            </nav>
-        </div>
-    </header>
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo" tabindex="0" aria-label="SIGNAl logo">SIGNAl</div>
+      <ul class="nav-links" id="nav-links" role="menu">
+        <li role="none"><a href="#about" role="menuitem" tabindex="-1">À propos</a></li>
+        <li role="none"><a href="#services" role="menuitem" tabindex="-1">Services</a></li>
+        <li role="none"><a href="#contact" role="menuitem" tabindex="-1">Contact</a></li>
+      </ul>
+      <button aria-label="Menu" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
 
-    <section id="accueil" class="hero">
-        <div class="container">
-            <h2>Bienvenue chez SIGNAL Solutions Informatiques</h2>
-            <p>Des services informatiques sur mesure pour entreprises et particuliers.</p>
-            <img src="webdesign.jpg" alt="Image d'accueil" class="hero-image" />
+  <header role="banner">
+    <div class="overlay-content">
+      <h1>SIGNAl</h1>
+      <p>Votre partenaire de confiance en solutions informatiques innovantes.</p>
+      <a href="#contact" class="btn-primary">Contactez-nous</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">À propos de SIGNAl</h2>
+      <div class="about-content">
+        <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Equipe informatique travaillant sur des solutions numériques" />
+        <div class="text">
+          <p>
+            Fondée en 2010, SIGNAl est une entreprise spécialisée dans le développement et la mise en œuvre de solutions informatiques adaptées aux besoins spécifiques des entreprises. Notre mission est de transformer vos défis technologiques en opportunités de croissance.
+          </p>
+          <p>
+            Nous combinons expertise technique, innovation et approche centrée sur le client pour fournir des services fiables, efficaces et évolutifs.
+          </p>
         </div>
+      </div>
     </section>
 
-    <section id="apropos" class="apropos">
-        <div class="container">
-            <h2>À propos de nous</h2>
-            <p>
-                SIGNAL Solutions Informatiques est spécialisé dans la fourniture de services IT
-                modernes et fiables. Notre équipe d’experts accompagne votre transformation digitale
-                avec des solutions adaptées et innovantes.
-            </p>
-            <p>
-                Nous mettons l’accent sur la qualité, la sécurité et la satisfaction client pour
-                garantir des résultats durables.
-            </p>
-            <img src="images/about-us.jpg" alt="À propos de nous" class="about-image" />
-        </div>
+    <section id="services" aria-labelledby="services-heading">
+      <h2 id="services-heading">Nos Services</h2>
+      <p class="lead">Découvrez comment nous pouvons vous accompagner dans votre transformation digitale.</p>
+      <div class="services-grid">
+        <article class="service-card" tabindex="0" aria-label="Service développement logiciel">
+          <img src="https://img.icons8.com/ios/100/0078d7/source-code.png" alt="Icône de développement logiciel" />
+          <h3>Développement Logiciel</h3>
+          <p>Création d’applications sur mesure pour optimiser vos processus métiers et améliorer votre productivité.</p>
+        </article>
+
+        <article class="service-card" tabindex="0" aria-label="Service cybersécurité">
+          <img src="https://img.icons8.com/ios/100/0078d7/lock--v1.png" alt="Icône de cybersécurité" />
+          <h3>Cybersécurité</h3>
+          <p>Solutions de sécurité avancées pour protéger vos données et infrastructures contre les menaces numériques.</p>
+        </article>
+
+        <article class="service-card" tabindex="0" aria-label="Service cloud et infrastructures">
+          <img src="https://img.icons8.com/ios/100/0078d7/cloud.png" alt="Icône cloud et infrastructures" />
+          <h3>Cloud & Infrastructures</h3>
+          <p>Mise en place et gestion d’infrastructures cloud évolutives adaptées à vos objectifs d’affaires.</p>
+        </article>
+
+        <article class="service-card" tabindex="0" aria-label="Service support technique">
+          <img src="https://img.icons8.com/ios/100/0078d7/customer-support.png" alt="Icône support technique" />
+          <h3>Support Technique</h3>
+          <p>Assistance réactive et maintenance pour assurer la continuité et la performance de votre environnement IT.</p>
+        </article>
+      </div>
     </section>
 
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Nos Services</h2>
-            <div class="service-list">
-                <div class="service-item">
-                    <h3>Développement Web & Mobile</h3>
-                    <p>Création de sites internet, applications mobiles et solutions web sur mesure.</p>
-                    <img src="images/web-development.jpg" alt="Développement Web" class="service-image" />
-                </div>
-                <div class="service-item">
-                    <h3>Assistance & Support</h3>
-                    <p>Support technique, maintenance et dépannage informatique rapide et efficace.</p>
-                    <img src="images/support.jpg" alt="Assistance et Support" class="service-image" />
-                </div>
-                <div class="service-item">
-                    <h3>Cybersécurité</h3>
-                    <p>Audit, surveillance et protection de vos systèmes contre les menaces digitales.</p>
-                    <img src="images/cybersecurity.jpg" alt="Cybersécurité" class="service-image" />
-                </div>
-                <div class="service-item">
-                    <h3>Cloud & Hébergement</h3>
-                    <p>Solutions cloud sécurisées et hébergement professionnel pour vos données et applications.</p>
-                    <img src="images/cloud-hosting.jpg" alt="Cloud et Hébergement" class="service-image" />
-                </div>
-            </div>
-        </div>
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contactez-nous</h2>
+      <form id="contact-form" aria-describedby="contact-desc">
+        <p id="contact-desc" style="text-align:center;max-width:600px;margin:auto;margin-bottom:1.5rem;color:#555;">
+          Remplissez ce formulaire pour discuter de vos besoins ou demander un devis personnalisé.
+        </p>
+        <label for="name">Nom complet</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom" required aria-required="true" />
+
+        <label for="email">Adresse e-mail</label>
+        <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required aria-required="true" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Écrivez votre message ici..." required aria-required="true"></textarea>
+
+        <button type="submit">Envoyer</button>
+      </form>
     </section>
+  </main>
 
-    <section id="atouts" class="atouts">
-        <div class="container">
-            <h2>Nos atouts</h2>
-            <ul class="atouts-list">
-                <li>Expertise confirmée en technologies modernes</li>
-                <li>Solutions personnalisées adaptées à vos besoins</li>
-                <li>Disponibilité et réactivité pour un support optimal</li>
-                <li>Respect des normes de sécurité les plus strictes</li>
-                <li>Prix compétitifs et engagement qualité</li>
-            </ul>
-            <img src="images/strengths.jpg" alt="Nos atouts" class="atouts-image" />
-        </div>
-    </section>
+  <footer>
+    &copy; 2024 SIGNAl - Solutions Informatiques. Tous droits réservés.
+  </footer>
 
-    <section id="temoignages" class="temoignages">
-        <div class="container">
-            <h2>Témoignages clients</h2>
-            <div class="temoignage-item">
-                <p>"Grâce à SIGNAL, notre site web a été refait à temps et au-delà de nos attentes."</p>
-                <h4>- Jean P.</h4>
-            </div>
-            <div class="temoignage-item">
-                <p>"Le support technique est très réactif et professionnel. Je recommande vivement."</p>
-                <h4>- Claire M.</h4>
-            </div>
-            <div class="temoignage-item">
-                <p>"Une équipe compétente qui nous a aidés à sécuriser nos données contre les attaques."</p>
-                <h4>- Alexandre R.</h4>
-            </div>
-            <img src="images/testimonials.jpg" alt="Témoignages clients" class="testimonials-image" />
-        </div>
-    </section>
+  <script>
+    // Mobile nav toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
 
-    <section id="faq" class="faq">
-        <div class="container">
-            <h2>Foire aux questions (FAQ)</h2>
-            <div class="faq-item">
-                <h3>Quels types de projets pouvez-vous réaliser ?</h3>
-                <p>Nous réalisons des sites web, applications mobiles, solutions cloud, et fournissons support IT.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Comment obtenir un devis personnalisé ?</h3>
-                <p>Contactez-nous via notre formulaire ou par téléphone, nous étudierons votre demande rapidement.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Quels sont vos horaires d’assistance ?</h3>
-                <p>Notre support est disponible du lundi au vendredi, de 9h à 18h.</p>
-            </div>
-            <img src="images/faq.jpg" alt="FAQ" class="faq-image" />
-        </div>
-    </section>
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+      menuToggle.setAttribute('aria-expanded', !expanded);
+      navLinks.classList.toggle('open');
+      // Manage tabIndex for accessibility
+      const links = navLinks.querySelectorAll('a');
+      links.forEach(link => {
+        link.tabIndex = navLinks.classList.contains('open') ? 0 : -1;
+      });
+    });
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contactez-nous</h2>
-            <form id="contact-form">
-                <label for="name">Nom</label>
-                <input type="text" id="name" name="name" required />
+    // Initially disable menu links tabIndex for accessibility (mobile)
+    if(window.innerWidth <= 768){
+      const menuLinks = navLinks.querySelectorAll('a');
+      menuLinks.forEach(link => link.tabIndex = -1);
+    }
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          // Close mobile menu on link click
+          if(navLinks.classList.contains('open')) {
+            navLinks.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', false);
+            navLinks.querySelectorAll('a').forEach(link => link.tabIndex = -1);
+          }
+        }
+      });
+    });
 
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-
-                <button type="submit">Envoyer</button>
-            </form>
-            <div id="form-message" class="form-message"></div>
-            <img src="images/contact.jpg" alt="Contact" class="contact-image" />
-        </div>
-    </section>
-
-    <footer>
-        <div class="container footer-container">
-            <p>&copy; 2024 SIGNAL Solutions Informatiques. Tous droits réservés.</p>
-            <div class="socials">
-                <a href="#" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a> |
-                <a href="#" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a> |
-                <a href="#" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    // Simple contact form submission handler
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Merci pour votre message ! Nous vous répondrons rapidement.');
+      contactForm.reset();
+    });
+  </script>
 </body>
 </html>
 
